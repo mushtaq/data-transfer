@@ -64,7 +64,7 @@ class OneToOneTransferTest extends FunSuite with MustMatchers with BeforeAndAfte
     Source(Http().singleRequest(listRequest))
       .map(_.entity.dataBytes.map(_.utf8String))
       .flatten(FlattenStrategy.concat)
-      .take(2)
+      .take(4)
   }
 
   override protected def afterAll() = {
