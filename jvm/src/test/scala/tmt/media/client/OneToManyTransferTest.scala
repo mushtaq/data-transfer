@@ -7,7 +7,7 @@ import org.scalatest.{BeforeAndAfterAll, FunSuite, MustMatchers}
 import tmt.common.Utils._
 import tmt.library.InetSocketAddressExtensions.RichInetSocketAddress
 import tmt.media.MediaAssembly
-import tmt.wavefront.RunningServer
+import tmt.wavefront.MainStreaming
 
 import scala.concurrent.duration.DurationInt
 
@@ -17,7 +17,7 @@ class OneToManyTransferTest extends FunSuite with MustMatchers with BeforeAndAft
   import testAssembly.actorConfigs._
 
   val roles = Seq("source", "destination1", "destination2")
-  val runningServers = roles.map(new RunningServer(_, "dev"))
+  val runningServers = roles.map(new MainStreaming(_, "dev"))
 
   val Seq(source, destination1, destination2) = runningServers.map(_.assembly.binding)
 
