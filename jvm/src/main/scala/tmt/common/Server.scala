@@ -8,7 +8,7 @@ import tmt.media.server.MediaRoute
 
 import scala.util.{Failure, Success}
 
-class Server(address: InetSocketAddress, connectionFlow: Types.ConnectionFlow, actorConfigs: ActorConfigs) {
+class Server(val address: InetSocketAddress, connectionFlow: Types.ConnectionFlow, actorConfigs: ActorConfigs) {
   import actorConfigs._
 
   private val runnableGraph = {

@@ -14,7 +14,7 @@ class TestParameters {
   }
 }
 
-class PerfMediaAssembly(name: String, perfTestParameters: TestParameters, env: String = "dev") extends MediaAssembly(name, "dev") {
+class PerfMediaAssembly(name: String, perfTestParameters: TestParameters, env: String = "dev") extends MediaAssembly(name, env) {
 
   override lazy val producer: Producer = new FilteredImageProducer(appSettings, perfTestParameters.minFileSize, perfTestParameters.maxFileSize)
 }

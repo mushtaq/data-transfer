@@ -1,11 +1,11 @@
 package tmt.media.client
 
 import org.scalatest.{BeforeAndAfterAll, FunSuite, MustMatchers}
-import tmt.wavefront.{Role, RunningServer}
+import tmt.wavefront.{RunningServerFactory, Role, RunningServer}
 
 class PipelineTest extends FunSuite with MustMatchers with BeforeAndAfterAll {
 
-  val runningServers = Role.values.map(role => new RunningServer(role.entryName, "dev"))
+  val runningServers = Role.values.map(role => RunningServerFactory.create(role.entryName, "dev"))
 
   test("run") {
     Thread.sleep(30000)
