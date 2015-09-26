@@ -54,7 +54,8 @@ lazy val client = project.in(file("client"))
     persistLauncher in Test := false,
     libraryDependencies ++= Seq(
       "org.scala-js" %%% "scalajs-dom" % "0.8.0",
-      "org.monifu" %%% "monifu" % "1.0-M11"
+      "org.monifu" %%% "monifu" % "1.0-M11",
+      "io.github.widok" %%% "widok" % "0.2.3"
     )
   )
 

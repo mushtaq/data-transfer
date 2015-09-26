@@ -9,10 +9,11 @@ import tmt.metrics.MetricsRendering
 import scala.scalajs.js.JSApp
 import scala.scalajs.js.annotation.JSExport
 
-object WebsocketApp extends JSApp {
+@JSExport
+object WebsocketApp {
 
-  @JSExport
-  override def main() = ()
+//  @JSExport
+//  override def main() = ()
 
   @JSExport
   def showImages(url: String): Unit = {
