@@ -28,10 +28,13 @@ class ImageTransformations(
   lazy val imageMetrics = images.map(image => ImageMetric(image.name, image.size, DateTime.now.clicks))
 
   lazy val rotatedImages = images.mapAsync(8) { originalImage =>
-    async(ImageRotationUtility.rotate(originalImage))(Flipper.ec)
+    async {
+      val rotatedImage = ImageRotationUtility.rotate(originalImage)
+      rotatedImage
+    }(Rotator.ec)
   }
 }
 
-object Flipper {
-  val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(15))
+object Rotator {
+  val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(20))
 }
