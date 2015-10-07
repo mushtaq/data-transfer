@@ -46,7 +46,8 @@ lazy val backend = project
   .settings(sharedSettings: _*)
   .settings(
     fork := true,
-    libraryDependencies ++= Dependencies.backendLibs
+    libraryDependencies ++= Dependencies.backendLibs,
+    classpathTypes += "maven-plugin"
   )
 
 lazy val shared = crossProject.crossType(CrossType.Pure)

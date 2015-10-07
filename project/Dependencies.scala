@@ -1,5 +1,6 @@
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 import sbt._
+import sbt.Keys._
 
 object Dependencies {
 
@@ -39,13 +40,19 @@ object Dependencies {
     "org.fusesource.leveldbjni" % "leveldbjni-all" % "1.8"
   )
 
+  val javacppVersion = "1.0"
+
   val backendLibs = Seq(
     "com.typesafe.akka" %% "akka-stream-experimental" % Versions.Streams,
     "com.typesafe.akka" %% "akka-http-core-experimental" % Versions.Streams,
     "com.typesafe.akka" %% "akka-http-experimental" % Versions.Streams,
     "net.codingwell" %% "scala-guice" % "4.0.0",
     "org.scala-lang.modules" %% "scala-async" % "0.9.5",
-    "org.imgscalr" % "imgscalr-lib" % "4.2",
+    "org.bytedeco" % "javacv" % "1.0",
+    "org.bytedeco"                 % "javacpp"         % javacppVersion,
+    "org.bytedeco"                 % "javacv"          % javacppVersion,
+    "org.bytedeco.javacpp-presets" % "opencv" % ("3.0.0-" + javacppVersion) classifier "",
+    "org.bytedeco.javacpp-presets" % "opencv" % "3.0.0-1.0" classifier "macosx-x86_64",
 
     //test
     "org.scalatest" %% "scalatest" % "2.2.5" % "test",
