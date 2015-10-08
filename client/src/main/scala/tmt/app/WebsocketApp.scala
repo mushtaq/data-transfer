@@ -77,13 +77,15 @@ object WebsocketApp extends JSApp {
     button1.onclick = { e: Event =>
       val topic = server1Select.value
       val serverName = server2Select.value
-      Ajax.post(s"$serverName/subscribe/$topic")
-      val newLi = li(
-        s"$serverName is subscribed to $topic",
-        button(data := s"/$serverName/unsubscribe/$topic")("unsubscribe")
-      )
-      ul1.appendChild(newLi.render)
-      addUnsubscribeCallback()
+      Ajax.post(s"$serverName/subscribe/$topic").onSuccess {
+        case _ =>
+          val newLi = li(
+            s"$serverName is subscribed to $topic",
+            button(data := s"/$serverName/unsubscribe/$topic")("unsubscribe")
+          )
+          ul1.appendChild(newLi.render)
+          addUnsubscribeCallback()
+      }
     }
 
     def addUnsubscribeCallback() = (0 to lis.length).foreach { index =>
